@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="tr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Hızlı Erişim</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        background-image: url("https://raw.githubusercontent.com/melihgerez/hubbleimg/refs/heads/main/march-21-2019-colliding-galaxies-ngc-6745.jpg");
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        min-height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        position: relative;
+      }
+
+      body::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.6);
+        z-index: 1;
+      }
+
+      .container {
+        border: 3px solid rgba(255, 255, 255, 0.8);
+        border-radius: 15px;
+        padding: 40px 60px;
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        background-color: rgba(0, 0, 0, 0.7);
+        position: relative;
+        z-index: 2;
+        box-shadow: 0 15px 50px rgba(0, 0, 0, 0.8),
+          0 0 30px rgba(255, 255, 255, 0.1),
+          inset 0 1px 0 rgba(255, 255, 255, 0.1);
+        backdrop-filter: blur(10px);
+        animation: expandVertical 0.8s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+        transform-origin: center center;
+      }
+
+      @keyframes expandVertical {
+        0% {
+          transform: scaleY(0.01);
+          opacity: 0.5;
+        }
+        100% {
+          transform: scaleY(1);
+          opacity: 1;
+        }
+      }
+
+      .container > * {
+        animation: fadeInContent 0.4s ease-out forwards;
+        animation-delay: 0.3s;
+        opacity: 0;
+      }
+
+      @keyframes fadeInContent {
+        0% {
+          opacity: 0;
+          transform: translateY(10px);
+        }
+        100% {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      .btn {
+        padding: 15px 50px;
+        font-size: 18px;
+        font-weight: bold;
+        text-decoration: none;
+        text-align: center;
+        border-radius: 8px;
+        transition: all 0.3s ease;
+        cursor: pointer;
+        border: 2px solid transparent;
+        position: relative;
+        z-index: 3;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5), 0 2px 4px rgba(0, 0, 0, 0.3);
+      }
+
+      .btn-english,
+      .btn-dictionary,
+      .btn-learners {
+        background-color: rgba(50, 50, 50, 0.9);
+        color: white;
+        border: 1px solid rgba(255, 255, 255, 0.2);
+      }
+
+      .btn-english:hover,
+      .btn-dictionary:hover,
+      .btn-learners:hover {
+        background-color: rgba(80, 80, 80, 0.95);
+        transform: scale(1.05) translateY(-3px);
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6),
+          0 5px 15px rgba(255, 255, 255, 0.1);
+        border: 1px solid rgba(255, 255, 255, 0.4);
+      }
+
+      .wrapper {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 30px;
+        z-index: 2;
+      }
+
+      .signature {
+        color: rgba(255, 255, 255, 0.4);
+        font-size: 12px;
+        font-style: italic;
+        letter-spacing: 1px;
+        text-align: center;
+        margin-top: 10px;
+        padding-top: 15px;
+        border-top: 1px solid rgba(255, 255, 255, 0.15);
+      }
+
+      .version-info {
+        color: rgba(255, 255, 255, 0.35);
+        font-family: "Courier New", Consolas, monospace;
+        font-size: 10px;
+        text-align: center;
+        margin-top: 8px;
+        letter-spacing: 0.5px;
+      }
+
+      .divider {
+        width: 100%;
+        height: 2px;
+        background: linear-gradient(
+          90deg,
+          transparent,
+          rgba(255, 255, 255, 0.5),
+          transparent
+        );
+        margin: 10px 0;
+      }
+
+      /* Mobil için responsive tasarım */
+      @media (max-width: 768px) {
+        body {
+          background-attachment: scroll;
+          background-size: cover;
+          min-height: 100vh;
+          min-height: -webkit-fill-available;
+        }
+
+        html {
+          height: -webkit-fill-available;
+        }
+
+        .container {
+          padding: 30px 40px;
+          border-radius: 12px;
+          gap: 15px;
+          margin: 15px;
+          border-width: 2px;
+        }
+
+        .btn {
+          padding: 12px 40px;
+          font-size: 16px;
+          border-radius: 7px;
+        }
+
+        .wrapper {
+          gap: 25px;
+        }
+
+        .signature {
+          font-size: 11px;
+          margin-top: 8px;
+          padding-top: 12px;
+        }
+
+        .divider {
+          margin: 8px 0;
+        }
+      }
+
+      @media (max-width: 480px) {
+        .container {
+          padding: 25px 30px;
+          gap: 12px;
+          margin: 10px;
+        }
+
+        .btn {
+          padding: 10px 30px;
+          font-size: 14px;
+        }
+
+        .signature {
+          font-size: 10px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="wrapper">
+      <div class="container">
+        <a
+          href="https://www.bbc.co.uk/learningenglish/"
+          target="_blank"
+          class="btn btn-english"
+        >
+          English
+        </a>
+        <a
+          href="https://www.thefreedictionary.com/"
+          target="_blank"
+          class="btn btn-dictionary"
+        >
+          Dictionary
+        </a>
+        <a
+          href="https://www.oxfordlearnersdictionaries.com/#google_vignette"
+          target="_blank"
+          class="btn btn-learners"
+        >
+          Learners Dictionary
+        </a>
+        <div class="divider"></div>
+        <a
+          href="https://www.popai.pro/?ref=eCY9M3&snid=1731908019096259914_rliJ39MZ&x_collect_uid=9b6eb0c8b23bfd9cdf6a7588672b01e2&gad_source=1&gad_campaignid=22145500488&gbraid=0AAAAArB5DbtXNfX1qtDsuG70qyaBhYW5H&gclid=Cj0KCQiA6Y7KBhCkARIsAOxhqtPExDqqfRx1kN4zhFwgmPD0zQu6MlPKtcPB-flNfG8_4g9N46MX3bAaAjdTEALw_wcB"
+          target="_blank"
+          class="btn btn-english"
+        >
+          Özet
+        </a>
+        <a href="https://gamma.app/" target="blank" class="btn btn-dictionary">
+          Sunum Oluşturma
+        </a>
+        <a
+          href="https://www.recraft.ai/projects"
+          target="_blank"
+          class="btn btn-learners"
+        >
+          Resim
+        </a>
+        <p class="signature">Made by Melih Gerez</p>
+        <p class="version-info">Version 1.3 | 19.12.2025</p>
+      </div>
+    </div>
+  </body>
+</html>
